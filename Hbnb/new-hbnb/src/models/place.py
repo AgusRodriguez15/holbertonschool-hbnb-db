@@ -2,6 +2,9 @@
 Place related functionality
 """
 
+from sqlalchemy import create_engine, ForeignKey, Column, String, Integer
+from sqlalchemy.ext.declarative import declarative_base
+from datetime import datetime
 from src import repo
 from src.models.base import Base
 from src.models.city import City
@@ -11,18 +14,18 @@ from src.models.user import User
 class Place(Base):
     """Place representation"""
 
-    name: str
-    description: str
-    address: str
-    latitude: float
-    longitude: float
-    host_id: str
-    city_id: str
-    price_per_night: int
-    number_of_rooms: int
-    number_of_bathrooms: int
-    max_guests: int
-
+    name = Column(String(255))
+    description = Column(String(255))
+    address = Column(String(255))
+    latitude = Column(float)
+    longitude = Column(float)
+    host_id = Column(String(255))
+    city_id = Column(String(255))
+    price_per_night = Column(int)
+    number_of_rooms = Column(int)
+    number_of_bathrooms = Column(int)
+    max_guests = Column(int)
+    
     def __init__(self, data: dict | None = None, **kw) -> None:
         """Dummy init"""
         super().__init__(**kw)

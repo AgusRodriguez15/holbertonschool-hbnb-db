@@ -1,7 +1,9 @@
 """
 Country related functionality
 """
-
+from sqlalchemy import create_engine, ForeignKey, Column, String, Integer
+from sqlalchemy.ext.declarative import declarative_base
+from datetime import datetime
 from src import repo
 
 
@@ -14,9 +16,9 @@ class Country:
     This class is used to get and list countries
     """
 
-    name: str
-    code: str
-    cities: list
+    name = Column(String(255))
+    code = Column(String(255))
+    cities = Column(list)
 
     def __init__(self, name: str, code: str, **kw) -> None:
         """Dummy init"""

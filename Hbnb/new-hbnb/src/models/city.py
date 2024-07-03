@@ -1,17 +1,19 @@
 """
 City related functionality
 """
-
+from sqlalchemy import create_engine, ForeignKey, Column, String, Integer
+from sqlalchemy.ext.declarative import declarative_base
+from datetime import datetime
 from src.models.base import Base
 from src import repo
 from src.models.country import Country
 
 
 class City(Base):
-    """City representation"""
-
-    name: str
-    country_code: str
+    
+    
+    name = Column(String(255))
+    country_code = Column(String(255))
 
     def __init__(self, name: str, country_code: str, **kw) -> None:
         """Dummy init"""

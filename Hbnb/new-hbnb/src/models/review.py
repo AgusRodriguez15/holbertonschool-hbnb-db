@@ -2,6 +2,9 @@
 Review related functionality
 """
 
+from sqlalchemy import create_engine, ForeignKey, Column, String, Integer
+from sqlalchemy.ext.declarative import declarative_base
+from datetime import datetime
 from src import repo
 from src.models.base import Base
 from src.models.place import Place
@@ -11,11 +14,11 @@ from src.models.user import User
 class Review(Base):
     """Review representation"""
 
-    place_id: str
-    user_id: str
-    comment: str
-    rating: float
-
+    place_id = Column(String(255))
+    user_id = Column(String(255))
+    comment = Column(String(255))
+    rating = Column(float)
+    
     def __init__(
         self, place_id: str, user_id: str, comment: str, rating: float, **kw
     ) -> None:

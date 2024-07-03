@@ -1,5 +1,8 @@
 """ Abstract base class for all models """
 
+from sqlalchemy import create_engine, ForeignKey, Column, String, Integer, DateTime
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.sql import func
 from datetime import datetime
 from typing import Any, Optional
 from src import repo
@@ -7,14 +10,14 @@ import uuid
 from abc import ABC, abstractmethod
 
 
-class Base(ABC):
+class Base:
     """
     Base Interface for all models
     """
 
-    id: str
-    created_at: datetime
-    updated_at: datetime
+    id = Column(String, primary_key=True)
+    created_at = Column(DateTime, default=func.now())
+    updated_at = Column(DateTime, default=func.now())
 
     def __init__(
         self,
@@ -37,6 +40,9 @@ class Base(ABC):
         self.id = str(id or uuid.uuid4())
         self.created_at = created_at or datetime.now()
         self.updated_at = updated_at or datetime.now()
+    #alchemy
+    
+    
 
     @classmethod
     def get(cls, id) -> "Any | None":

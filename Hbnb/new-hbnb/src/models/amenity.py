@@ -1,15 +1,18 @@
 """
 Amenity related functionality
 """
-
+from datetime import datetime
+from sqlalchemy import create_engine, ForeignKey, Column, String, Integer
+from sqlalchemy.ext.declarative import declarative_base
 from src.models.base import Base
 from src import repo
 
 
 class Amenity(Base):
     """Amenity representation"""
+    #alchemy
 
-    name: str
+    name = Column(String(255))
 
     def __init__(self, name: str, **kw) -> None:
         """Dummy init"""
@@ -29,7 +32,7 @@ class Amenity(Base):
             "created_at": self.created_at.isoformat(),
             "updated_at": self.updated_at.isoformat(),
         }
-
+    
     @staticmethod
     def create(data: dict) -> "Amenity":
         """Create a new amenity"""

@@ -2,6 +2,9 @@
 User related functionality
 """
 
+from sqlalchemy import create_engine, ForeignKey, Column, String, Integer
+from sqlalchemy.ext.declarative import declarative_base
+from datetime import datetime
 from src import repo
 from typing import Optional
 from src.models.base import Base
@@ -10,11 +13,11 @@ from src.models.base import Base
 class User(Base):
     """User representation"""
 
-    email: str
-    password: str | None
-    first_name: str
-    last_name: str
-
+    email = Column(String(255))
+    password = Column(String(255))
+    first_name = Column(String(255))
+    last_name = Column(String(255))
+   
     def __init__(
         self,
         email: str,
