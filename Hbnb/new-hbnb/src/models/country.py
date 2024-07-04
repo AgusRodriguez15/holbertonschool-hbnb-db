@@ -3,11 +3,12 @@ Country related functionality
 """
 from sqlalchemy import create_engine, ForeignKey, Column, String, Integer
 from sqlalchemy.ext.declarative import declarative_base
+from src.models.base import Base
 from datetime import datetime
 from src import repo
+from hbnb import db
 
-
-class Country:
+class Country(Base, db.Model):
     """
     Country representation
 

@@ -9,9 +9,9 @@ from src import repo
 from src.models.base import Base
 from src.models.city import City
 from src.models.user import User
+from hbnb import db
 
-
-class Place(Base):
+class Place(Base, db.Model):
     """Place representation"""
 
     name = Column(String(255))

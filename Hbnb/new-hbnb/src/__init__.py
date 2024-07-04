@@ -2,11 +2,13 @@
 
 from flask import Flask
 from flask_cors import CORS
+from flask_sqlalchemy import SQLAlchemy
 
 from src.persistence.repository import RepositoryManager
 
 cors = CORS()
 repo = RepositoryManager()
+db = SQLAlchemy()
 
 
 def create_app(config_class="src.config.DevelopmentConfig") -> Flask:

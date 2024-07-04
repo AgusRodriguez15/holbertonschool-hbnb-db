@@ -7,9 +7,9 @@ from datetime import datetime
 from src.models.base import Base
 from src import repo
 from src.models.country import Country
+from hbnb import db
 
-
-class City(Base):
+class City(Base, db.Model):
     
     
     name = Column(String(255))

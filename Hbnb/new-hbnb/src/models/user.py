@@ -8,9 +8,9 @@ from datetime import datetime
 from src import repo
 from typing import Optional
 from src.models.base import Base
+from hbnb import db
 
-
-class User(Base):
+class User(Base, db.Model):
     """User representation"""
 
     email = Column(String(255))

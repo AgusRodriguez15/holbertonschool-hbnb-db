@@ -5,10 +5,11 @@ from datetime import datetime
 from sqlalchemy import create_engine, ForeignKey, Column, String, Integer
 from sqlalchemy.ext.declarative import declarative_base
 from src.models.base import Base
+from hbnb import db
 from src import repo
 
 
-class Amenity(Base):
+class Amenity(Base, db.Model):
     """Amenity representation"""
     #alchemy
 
