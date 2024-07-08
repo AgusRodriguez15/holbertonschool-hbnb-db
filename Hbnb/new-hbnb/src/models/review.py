@@ -2,22 +2,22 @@
 Review related functionality
 """
 
-from sqlalchemy import create_engine, ForeignKey, Column, String, Integer
+import sqlalchemy as sa
 from sqlalchemy.ext.declarative import declarative_base
 from datetime import datetime
 from src import repo
 from src.models.base import Base
 from src.models.place import Place
 from src.models.user import User
-from hbnb import db
+from src import db
 
 class Review(Base, db.Model):
     """Review representation"""
 
-    place_id = Column(String(255))
-    user_id = Column(String(255))
-    comment = Column(String(255))
-    rating = Column(float)
+    place_id = sa.Column(sa.String(255))
+    user_id = sa.Column(sa.String(255))
+    comment = sa.Column(sa.String(255))
+    rating = sa.Column(float)
     
     def __init__(
         self, place_id: str, user_id: str, comment: str, rating: float, **kw

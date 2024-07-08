@@ -35,6 +35,7 @@ def register_extensions(app: Flask) -> None:
     cors.init_app(app, resources={r"/*": {"origins": "*"}})
     repo.init_app(app)
     # Further extensions can be added here
+    db.init_app(app=app)
 
 
 def register_routes(app: Flask) -> None:

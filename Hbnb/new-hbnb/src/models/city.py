@@ -1,19 +1,19 @@
 """
 City related functionality
 """
-from sqlalchemy import create_engine, ForeignKey, Column, String, Integer
+import sqlalchemy as sa
 from sqlalchemy.ext.declarative import declarative_base
 from datetime import datetime
 from src.models.base import Base
 from src import repo
 from src.models.country import Country
-from hbnb import db
+from src import db
 
 class City(Base, db.Model):
     
     
-    name = Column(String(255))
-    country_code = Column(String(255))
+    name = sa.Column(sa.String(255))
+    country_code = sa.Column(sa.String(255))
 
     def __init__(self, name: str, country_code: str, **kw) -> None:
         """Dummy init"""

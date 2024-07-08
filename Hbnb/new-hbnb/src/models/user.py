@@ -2,21 +2,21 @@
 User related functionality
 """
 
-from sqlalchemy import create_engine, ForeignKey, Column, String, Integer
+import sqlalchemy as sa
 from sqlalchemy.ext.declarative import declarative_base
 from datetime import datetime
 from src import repo
 from typing import Optional
 from src.models.base import Base
-from hbnb import db
+from src import db
 
 class User(Base, db.Model):
     """User representation"""
 
-    email = Column(String(255))
-    password = Column(String(255))
-    first_name = Column(String(255))
-    last_name = Column(String(255))
+    email = sa.Column(sa.String(255))
+    password = sa.Column(sa.String(255))
+    first_name = sa.Column(sa.String(255))
+    last_name = sa.Column(sa.String(255))
    
     def __init__(
         self,

@@ -1,6 +1,6 @@
 """ Abstract base class for all models """
 
-from sqlalchemy import create_engine, ForeignKey, Column, String, Integer, DateTime
+import sqlalchemy as sa
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.sql import func
 from datetime import datetime
@@ -15,9 +15,9 @@ class Base:
     Base Interface for all models
     """
 
-    id = Column(String, primary_key=True)
-    created_at = Column(DateTime, default=func.now())
-    updated_at = Column(DateTime, default=func.now())
+    id = sa.Column(sa.String, primary_key=True)
+    created_at = sa.Column(sa.DateTime, default=func.now())
+    updated_at = sa.Column(sa.DateTime, default=func.now())
 
     def __init__(
         self,

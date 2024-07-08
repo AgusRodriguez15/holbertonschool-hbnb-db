@@ -2,29 +2,29 @@
 Place related functionality
 """
 
-from sqlalchemy import create_engine, ForeignKey, Column, String, Integer
+import sqlalchemy as sa
 from sqlalchemy.ext.declarative import declarative_base
 from datetime import datetime
 from src import repo
 from src.models.base import Base
 from src.models.city import City
 from src.models.user import User
-from hbnb import db
+from src import db
 
 class Place(Base, db.Model):
     """Place representation"""
 
-    name = Column(String(255))
-    description = Column(String(255))
-    address = Column(String(255))
-    latitude = Column(float)
-    longitude = Column(float)
-    host_id = Column(String(255))
-    city_id = Column(String(255))
-    price_per_night = Column(int)
-    number_of_rooms = Column(int)
-    number_of_bathrooms = Column(int)
-    max_guests = Column(int)
+    name = sa.Column(sa.String(255))
+    description = sa.Column(sa.String(255))
+    address = sa.Column(sa.String(255))
+    latitude = sa.Column(float)
+    longitude = sa.Column(float)
+    host_id = sa.Column(sa.String(255))
+    city_id = sa.Column(sa.String(255))
+    price_per_night = sa.Column(int)
+    number_of_rooms = sa.Column(int)
+    number_of_bathrooms = sa.Column(int)
+    max_guests = sa.Column(int)
     
     def __init__(self, data: dict | None = None, **kw) -> None:
         """Dummy init"""

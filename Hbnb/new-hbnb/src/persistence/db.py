@@ -21,6 +21,7 @@ class DBRepository(Repository):
 
     def __init__(self) -> None:
         """Not implemented"""
+        
 
     def get_all(self, model_name: str) -> list:
         """Not implemented"""

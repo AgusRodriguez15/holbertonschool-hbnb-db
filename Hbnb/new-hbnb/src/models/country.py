@@ -1,12 +1,12 @@
 """
 Country related functionality
 """
-from sqlalchemy import create_engine, ForeignKey, Column, String, Integer
+import sqlalchemy as sa
 from sqlalchemy.ext.declarative import declarative_base
 from src.models.base import Base
 from datetime import datetime
 from src import repo
-from hbnb import db
+from src import db
 
 class Country(Base, db.Model):
     """
@@ -17,9 +17,9 @@ class Country(Base, db.Model):
     This class is used to get and list countries
     """
 
-    name = Column(String(255))
-    code = Column(String(255))
-    cities = Column(list)
+    name = sa.Column(sa.String(255))
+    code = sa.Column(sa.String(255))
+    cities = sa.Column(sa.String(255))
 
     def __init__(self, name: str, code: str, **kw) -> None:
         """Dummy init"""
