@@ -17,7 +17,7 @@ class Review(Base, db.Model):
     place_id = sa.Column(sa.String(255))
     user_id = sa.Column(sa.String(255))
     comment = sa.Column(sa.String(255))
-    rating = sa.Column(float)
+    rating = sa.Column(sa.Float)
     
     def __init__(
         self, place_id: str, user_id: str, comment: str, rating: float, **kw

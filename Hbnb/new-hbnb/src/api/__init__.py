@@ -14,8 +14,6 @@ from src.api.places import api as places_ns
 from src.api.reviews import api as reviews_ns
 
 api_bp = Blueprint("api", __name__)
-Blueprint.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///development.db'
-db = SQLAlchemy(Blueprint)
 
 api = Api(
     api_bp,

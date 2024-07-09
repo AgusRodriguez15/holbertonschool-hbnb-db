@@ -17,14 +17,14 @@ class Place(Base, db.Model):
     name = sa.Column(sa.String(255))
     description = sa.Column(sa.String(255))
     address = sa.Column(sa.String(255))
-    latitude = sa.Column(float)
-    longitude = sa.Column(float)
+    latitude = sa.Column(sa.Float)
+    longitude = sa.Column(sa.Float)
     host_id = sa.Column(sa.String(255))
     city_id = sa.Column(sa.String(255))
-    price_per_night = sa.Column(int)
-    number_of_rooms = sa.Column(int)
-    number_of_bathrooms = sa.Column(int)
-    max_guests = sa.Column(int)
+    price_per_night = sa.Column(sa.Integer)
+    number_of_rooms = sa.Column(sa.Integer)
+    number_of_bathrooms = sa.Column(sa.Integer)
+    max_guests = sa.Column(sa.Integer)
     
     def __init__(self, data: dict | None = None, **kw) -> None:
         """Dummy init"""
