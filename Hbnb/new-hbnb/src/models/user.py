@@ -3,12 +3,9 @@ User related functionality
 """
 
 import sqlalchemy as sa
-from sqlalchemy.ext.declarative import declarative_base
-from datetime import datetime
 from src import repo
-from typing import Optional
 from src.models.base import Base
-from src import db
+from src import db, bcrypt
 
 class User(Base, db.Model):
     """User representation"""
@@ -17,13 +14,16 @@ class User(Base, db.Model):
     password = sa.Column(sa.String(255))
     first_name = sa.Column(sa.String(255))
     last_name = sa.Column(sa.String(255))
+    password = sa.Column(sa.String)
+    is_admin = sa.Column(sa.Boolean, default=False)
    
     def __init__(
         self,
         email: str,
         first_name: str,
         last_name: str,
-        password: Optional[str] = None,
+        password: str,
+        is_admin:bool=False,
         **kw,
     ):
         """Dummy init"""
@@ -32,6 +32,9 @@ class User(Base, db.Model):
         self.password = password
         self.first_name = first_name
         self.last_name = last_name
+        self.is_admin = is_admin
+        
+        self.set_password(password)
 
     def __repr__(self) -> str:
         """Dummy repr"""
@@ -47,6 +50,12 @@ class User(Base, db.Model):
             "created_at": self.created_at.isoformat(),
             "updated_at": self.updated_at.isoformat(),
         }
+        
+    def set_password(self, password):
+         self.password = bcrypt.generate_password_hash(password).decode('utf-8')
+         
+    def check_password(self, password ):
+         return bcrypt.check_password_hash(self.password, password)
 
     @staticmethod
     def create(user: dict) -> "User":

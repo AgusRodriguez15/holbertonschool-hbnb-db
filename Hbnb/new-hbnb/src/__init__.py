@@ -3,12 +3,15 @@
 from flask import Flask
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
-
+from flask_jwt_extended import JWTManager
+from flask_bcrypt import Bcrypt
 from src.persistence.repository import RepositoryManager
 
 cors = CORS()
 repo = RepositoryManager()
 db = SQLAlchemy()
+jwt = JWTManager()
+bcrypt = Bcrypt()
 
 
 def create_app(config_class="src.config.DevelopmentConfig") -> Flask:
@@ -36,7 +39,8 @@ def register_extensions(app: Flask) -> None:
     repo.init_app(app)
     # Further extensions can be added here
     db.init_app(app=app)
-
+    jwt.init_app(app)
+    bcrypt.init_app(app)
 
 def register_routes(app: Flask) -> None:
     """Import and register the routes for the Flask app"""

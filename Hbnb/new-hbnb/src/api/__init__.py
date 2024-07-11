@@ -12,6 +12,7 @@ from src.api.cities import api as cities_ns
 from src.api.amenities import api as amenities_ns
 from src.api.places import api as places_ns
 from src.api.reviews import api as reviews_ns
+from src.api.authentication import api as authentication_ns
 
 api_bp = Blueprint("api", __name__)
 
@@ -32,4 +33,5 @@ api.add_namespace(countries_ns, path="/countries")
 api.add_namespace(cities_ns, path="/cities")
 api.add_namespace(amenities_ns, path="/amenities")
 api.add_namespace(places_ns, path="/places")
+api.add_namespace(authentication_ns, path="/login")
 api.add_namespace(reviews_ns, path="/")
